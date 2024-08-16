@@ -1,0 +1,14 @@
+{
+  "name": "abhishek-react",
+  "version": "1.0.0",
+  "description": "Abhishek's attempt on learning React",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Abhishek Chauhan",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
