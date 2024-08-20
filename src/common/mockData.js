@@ -8,9 +8,9 @@ const restaurantListData = [
       areaName: "CG Road",
       costForTwo: "₹250 for two",
       cuisines: ["Chinese", "Asian", "Tibetan", "Desserts"],
-      avgRating: 4.3,
+      avgRating: 3.3,
       parentId: "61955",
-      avgRatingString: "4.3",
+      avgRatingString: "3.3",
       totalRatingsString: "1K+",
       sla: {
         deliveryTime: 22,
