@@ -35,16 +35,104 @@ const Header = () => {
   );
 };
 
-const RestaurantCard = () => {
+const restaurantData = {
+  info: {
+    id: "636894",
+    name: "Chinese Wok",
+    cloudinaryImageId: "e0839ff574213e6f35b3899ebf1fc597",
+    locality: "Ellis Bridge",
+    areaName: "CG Road",
+    costForTwo: "₹250 for two",
+    cuisines: ["Chinese", "Asian", "Tibetan", "Desserts"],
+    avgRating: 4.3,
+    parentId: "61955",
+    avgRatingString: "4.3",
+    totalRatingsString: "1K+",
+    sla: {
+      deliveryTime: 22,
+      lastMileTravel: 3.8,
+      serviceability: "SERVICEABLE",
+      slaString: "20-25 mins",
+      lastMileTravelString: "3.8 km",
+      iconType: "ICON_TYPE_EMPTY",
+    },
+    availability: {
+      nextCloseTime: "2024-08-21 01:00:00",
+      opened: true,
+    },
+    badges: {
+      imageBadges: [
+        {
+          imageId: "v1695133679/badges/Pure_Veg111.png",
+          description: "pureveg",
+        },
+      ],
+    },
+    isOpen: true,
+    type: "F",
+    badgesV2: {
+      entityBadges: {
+        imageBased: {
+          badgeObject: [
+            {
+              attributes: {
+                description: "pureveg",
+                imageId: "v1695133679/badges/Pure_Veg111.png",
+              },
+            },
+          ],
+        },
+        textBased: {},
+        textExtendedBadges: {},
+      },
+    },
+    aggregatedDiscountInfoV3: {
+      header: "ITEMS",
+      subHeader: "AT ₹149",
+    },
+    differentiatedUi: {
+      displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      differentiatedUiMediaDetails: {
+        mediaType: "ADS_MEDIA_ENUM_IMAGE",
+        lottie: {},
+        video: {},
+      },
+    },
+    reviewsSummary: {},
+    displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    restaurantOfferPresentationInfo: {},
+    externalRatings: {
+      aggregatedRating: {
+        rating: "2.8",
+        ratingCount: "20+",
+      },
+      source: "GOOGLE",
+      sourceIconImageId: "v1704440323/google_ratings/rating_google_tag",
+    },
+    ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+  },
+  analytics: {},
+  cta: {
+    link: "https://www.swiggy.com/restaurants/chinese-wok-ellis-bridge-cg-road-ahmedabad-636894",
+    type: "WEBLINK",
+  },
+};
+
+const RestaurantCard = (props) => {
+  const { resData } = props;
   return (
     <div className="restaurant-card">
       <img
         className="restaurant-image"
-        src="https://images.pexels.com/photos/6363501/pexels-photo-6363501.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        src={
+          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+          resData.info.cloudinaryImageId
+        }
       />
-      <h4>Abhishek's Restaurant</h4>
-      <h4>4.4 Stars</h4>
-      <h4>38 Minutes</h4>
+      <h4>{resData.info.name}</h4>
+      <h4>{resData.info.avgRating}</h4>
+      <h4>{resData.info.costForTwo}</h4>
+      <h4>{resData.info.sla.deliveryTime} Minutes</h4>
     </div>
   );
 };
@@ -56,15 +144,7 @@ const Body = () => {
         <input name="myInput" />
       </div>
       <div className="restaurant-container">
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
+        <RestaurantCard resData={restaurantData} />
       </div>
     </div>
   );
