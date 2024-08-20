@@ -1667,20 +1667,23 @@ const restaurantListData = [
 
 const RestaurantCard = (props) => {
   const { resData } = props;
+  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
+    resData?.info;
+  const { deliveryTime } = resData?.info?.sla;
   return (
     <div className="restaurant-card">
       <img
         className="restaurant-image"
         src={
           "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          resData.info.cloudinaryImageId
+          cloudinaryImageId
         }
       />
-      <h4>{resData.info.name}</h4>
-      <h4>{resData.info.cuisines.join(", ")}</h4>
-      <h4>{resData.info.avgRating}</h4>
-      <h4>{resData.info.costForTwo}</h4>
-      <h4>{resData.info.sla.deliveryTime} Minutes</h4>
+      <h4>{name}</h4>
+      <h4>{cuisines.join(", ")}</h4>
+      <h4>{avgRating}</h4>
+      <h4>{costForTwo}</h4>
+      <h4>{deliveryTime} Minutes</h4>
     </div>
   );
 };
@@ -1692,8 +1695,9 @@ const Body = () => {
         <input name="myInput" />
       </div>
       <div className="restaurant-container">
-        <RestaurantCard resData={restaurantListData[0]} />
-        <RestaurantCard resData={restaurantListData[1]} />
+        {restaurantListData.map((restaurant) => (
+          <RestaurantCard resData={restaurant} />
+        ))}
       </div>
     </div>
   );
