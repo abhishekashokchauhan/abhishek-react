@@ -1,43 +1,83 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// Learning the JSX right now.
-// Creating the React Element using the JSX
-const JsxHeading = <h1 id="heading"> Hello Abhishek from the JSX</h1>;
+/**
+ *
+ * Making the layout for my app
+ *
+ * Header
+ *  Logo
+ *  Navigation Menu
+ * Body
+ *  Search bar
+ *  Restaurant Container
+ *    Restaurant Card
+ * Footer
+ */
 
-// React component
-// 2 types, Classbased and functional component.
-// Classbased is the old way of writing the code
-// Functional component is the new way
-
-// What is the react functional component ?
-// Is just a JS function which returns the JSX.
-// First Letter has to be capital
-
-const HeadingComponent = () => {
-  return <h1>Hello From the functional component</h1>;
+const Header = () => {
+  return (
+    <div className="header-frame">
+      <div className="logo-space">
+        <img
+          className="logo-image"
+          src="https://img.freepik.com/free-vector/restaurant-logo-template_23-2149493630.jpg?t=st=1724173588~exp=1724177188~hmac=11adf48eee8a35594e471b31a990a5409c3960e8e191bf65d60f249605de53f5&w=1060"
+        />
+      </div>
+      <div className="navigation-bar">
+        <ul>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
 };
 
-const number = 100;
+const RestaurantCard = () => {
+  return (
+    <div className="restaurant-card">
+      <img
+        className="restaurant-image"
+        src="https://images.pexels.com/photos/6363501/pexels-photo-6363501.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      />
+      <h4>Abhishek's Restaurant</h4>
+      <h4>4.4 Stars</h4>
+      <h4>38 Minutes</h4>
+    </div>
+  );
+};
 
-const HeadingComponent2 = () => (
-  <div>
-    {JsxHeading}
-    {number}
-    <h1>Hello From the functional component</h1>
-  </div>
-);
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="serach-bar">
+        <input name="myInput" />
+      </div>
+      <div className="restaurant-container">
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+      </div>
+    </div>
+  );
+};
 
-// React.createElement is the javascript object
-// When you render it , it becomes the HTML element
-// Below is the way we can create it, but soon react developer realised that this
-// is not developer friedly and hence they created something called is JSX.
-// React can be developed without the JSX as well.
-
-// Below is the way to create the react element only.
-// const header = React.createElement("h1", { className : 'greeting' } , "Hello world abhishek!");
+const AppLayout = () => {
+  return (
+    <div className="application">
+      <Header />
+      <Body />
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-// Render would replace the content in the DOM.
-root.render(<HeadingComponent2 />);
+root.render(<AppLayout />);

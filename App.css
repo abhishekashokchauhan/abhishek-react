@@ -1,7 +1,57 @@
-#heading {
-    color: green;
-  }
+* {
+  font-family: "Poppins", sans-serif;
+}
 
+h4 {
+  margin: 1px;
+  font-weight: normal;
+}
 
-  
-  
+.logo-image {
+  height: 120px;
+  width: auto;
+}
+
+.header-frame {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation-bar > ul {
+  display: flex;
+  list-style: none;
+}
+
+.navigation-bar > ul > li {
+  margin: 15px;
+}
+
+.navigation-bar > ul > li:last-child {
+  margin-right: 50px;
+}
+
+.body {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.restaurant-container {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap:20px;
+}
+
+.restaurant-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: antiquewhite;
+}
+
+.restaurant-image {
+  height: 120px;
+  width: fit-content;
+}
