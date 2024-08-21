@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import restaurantListData from "../common/mockData";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 
 /**
  * 2 types of the rendering.
@@ -25,6 +26,7 @@ import RestaurantCard from "./RestaurantCard";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
+  console.log(resList);
 
   const getDataFromAPI = async () => {
     const response = await fetch(
@@ -40,6 +42,11 @@ const Body = () => {
   useEffect(() => {
     getDataFromAPI();
   }, []);
+
+  if (resList.length === 0) {
+    console.log("Returning shimmer");
+    return <Shimmer />;
+  }
 
   return (
     <div className="body">

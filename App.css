@@ -38,7 +38,7 @@ h4 {
 .restaurant-container {
   margin-top: 10px;
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto;
   gap:20px;
 }
 
@@ -54,4 +54,18 @@ h4 {
 .restaurant-image {
   height: 120px;
   width: fit-content;
+}
+
+.shimmer-container {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer {
+  margin: 20px;
+  width: 200px;
+  height: 400px;
+  padding: 10px;
+  background-color: rgb(146, 142, 137);
 }
