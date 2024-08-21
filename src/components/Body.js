@@ -1,9 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import restaurantListData from "../common/mockData";
 import RestaurantCard from "./RestaurantCard";
 
+/**
+ * 2 types of the rendering.
+ *
+ * 1) Page Load -> API Call -> Render
+ * 2) Page Load -> Render -> API Call -> Re-render
+ *
+ * React would always use the second approach.
+ * We would do the useEffect , to execte the function when
+ * the element renders.
+ *
+ * We would call the Swiggy's API and show the data
+ * We would use async and await.
+ *
+ * Shimmer UI, Conditional rendering, Loading
+ * Make the custom shimmer and don't use external.
+ *
+ * State variable, Rating example, Maintain state
+ * We would do and Login and Logout button too.
+ * When the state variable changes, then re-render the element.
+ */
+
 const Body = () => {
-  const [resList, setResList] = useState(restaurantListData);
+  const [resList, setResList] = useState([]);
+
+  const getDataFromAPI = async () => {
+    const response = await fetch(
+      "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.02760&lng=72.58710&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const json = await response.json();
+    setResList(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
+
+  useEffect(() => {
+    getDataFromAPI();
+  }, []);
 
   return (
     <div className="body">
