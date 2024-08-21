@@ -22,6 +22,11 @@ import Shimmer from "./Shimmer";
  * State variable, Rating example, Maintain state
  * We would do and Login and Logout button too.
  * When the state variable changes, then re-render the element.
+ *
+ * If there is no dependecy array, every render.
+ * If there is a dependency array, then for the initial render.
+ * If there is a dependency, then when the dependency changes,
+ * we need to change this.
  */
 
 const Body = () => {
@@ -44,7 +49,6 @@ const Body = () => {
   }, []);
 
   if (resList.length === 0) {
-    console.log("Returning shimmer");
     return <Shimmer />;
   }
 
