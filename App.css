@@ -58,14 +58,14 @@ h4 {
 
 .shimmer-container {
   margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 20px;
 }
 
 .shimmer {
   margin: 20px;
-  width: 200px;
   height: 400px;
   padding: 10px;
-  background-color: rgb(146, 142, 137);
+  background-color: antiquewhite;
 }

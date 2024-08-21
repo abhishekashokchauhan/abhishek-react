@@ -31,7 +31,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
-  console.log(resList);
+  const [filteredResList, setFilteredResList] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   const getDataFromAPI = async () => {
     const response = await fetch(
@@ -42,20 +43,42 @@ const Body = () => {
     setResList(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFilteredResList(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   useEffect(() => {
     getDataFromAPI();
   }, []);
 
-  if (resList.length === 0) {
+  if (filteredResList.length === 0) {
     return <Shimmer />;
   }
 
   return (
     <div className="body">
       <div className="serach-bar">
-        <input name="myInput" />
+        <input
+          name="myInput"
+          value={searchInput}
+          onChange={(e) => {
+            setSearchInput(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            const filteredItems = resList.filter((restaurant) => {
+              return restaurant.info.name
+                .toLowerCase()
+                .includes(searchInput.toLowerCase());
+            });
+            setFilteredResList(filteredItems);
+          }}
+        >
+          Search
+        </button>
+
         <button
           onClick={() => {
             const updated = resList.filter(
@@ -69,7 +92,7 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurant-container">
-        {resList.map((restaurant) => (
+        {filteredResList.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
