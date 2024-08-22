@@ -8,7 +8,7 @@ Episode 8 -> Let's get classy, 2:46:15, iPhone, Saved
 Episode 9 -> Optimising our app, 1:38:08, iPad, Saved
 Episode 10 -> Jo Dikhta he woh bikta hain, 1:37:31, iPad, Saved
 Episode 11 -> Data is the new oil, 3:07:59, iPhone, Saved
-Episode 12 -> Let's build our store, 2:39:33
+Episode 12 -> Let's build our store, 2:39:33, iPad, Saved
 Episode 13 -> Time for the test, 4:08:34
 
 Episode 14 -> Netflix GPT - The beginning -> 3:55:19
