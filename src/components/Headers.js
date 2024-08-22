@@ -1,5 +1,6 @@
 import { APP_LOGO } from "../common/constant";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 /**
  * Adding the Login button
@@ -17,8 +18,12 @@ const Header = () => {
       </div>
       <div className="navigation-bar">
         <ul>
-          <li>About Us</li>
-          <li>Contact Us</li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
           <li>Cart</li>
           <li>
             <button
