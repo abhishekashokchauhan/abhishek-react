@@ -58,41 +58,46 @@ const Body = () => {
   }
 
   return (
-    <div className="body">
-      <div className="serach-bar">
-        <input
-          name="myInput"
-          value={searchInput}
-          onChange={(e) => {
-            setSearchInput(e.target.value);
-          }}
-        />
-        <button
-          onClick={() => {
-            const filteredItems = resList.filter((restaurant) => {
-              return restaurant.info.name
-                .toLowerCase()
-                .includes(searchInput.toLowerCase());
-            });
-            setFilteredResList(filteredItems);
-          }}
-        >
-          Search
-        </button>
+    <div className="body mx-4">
+      <div className="my-2 border-2 border-gray-400 rounded-lg">
+        <div className="serach-bar m-3">
+          <input
+            name="myInput"
+            value={searchInput}
+            className="px-3 py-2 border-2 border-gray-300 rounded-lg"
+            onChange={(e) => {
+              setSearchInput(e.target.value);
+            }}
+          />
+          <button
+            className="ml-4 px-3 py-2 rounded-lg bg-green-100 hover:bg-green-400"
+            onClick={() => {
+              const filteredItems = resList.filter((restaurant) => {
+                return restaurant.info.name
+                  .toLowerCase()
+                  .includes(searchInput.toLowerCase());
+              });
+              setFilteredResList(filteredItems);
+            }}
+          >
+            Search
+          </button>
 
-        <button
-          onClick={() => {
-            const updated = resList.filter(
-              (restaurant) => restaurant.info.avgRating > 4
-            );
-            setResList(updated);
-          }}
-        >
-          {" "}
-          Above 4 ratings
-        </button>
+          <button
+            className="ml-4 px-3 py-2 rounded-lg bg-yellow-100 hover:bg-yellow-400"
+            onClick={() => {
+              const updated = resList.filter(
+                (restaurant) => restaurant.info.avgRating > 4
+              );
+              setResList(updated);
+            }}
+          >
+            {" "}
+            Above 4 ratings
+          </button>
+        </div>
       </div>
-      <div className="restaurant-container">
+      <div className="flex flex-wrap justify-between">
         {filteredResList.map((restaurant) => (
           <Link
             to={"/restaurant/" + restaurant.info.id}

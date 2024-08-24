@@ -1,6 +1,5 @@
 export const APP_LOGO =
-  "https://img.freepik.com/free-vector/restaurant-logo-template_23-2149493630.jpg?t=st=1724173588~exp=1724177188~hmac=11adf48eee8a35594e471b31a990a5409c3960e8e191bf65d60f249605de53f5&w=1060";
-
+  "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/25539c29532269.55f7d6a0a8c71.jpg";
 export const CDN_IMG_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
