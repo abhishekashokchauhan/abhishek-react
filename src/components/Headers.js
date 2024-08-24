@@ -1,6 +1,7 @@
 import { APP_LOGO } from "../common/constant";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 /**
  * Adding the Login button
@@ -10,6 +11,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [login, setLogin] = useState("Login");
+  const onlineStatus = useOnlineStatus();
 
   return (
     <div className="header-frame">
@@ -18,6 +20,7 @@ const Header = () => {
       </div>
       <div className="navigation-bar">
         <ul>
+          <li>{onlineStatus ? "online" : "offline"}</li>
           <li>
             <Link to="/about">About Us</Link>
           </li>
