@@ -1,7 +1,8 @@
 import { APP_LOGO } from "../common/constant";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 /**
  * Adding the Login button
@@ -12,6 +13,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Header = () => {
   const [login, setLogin] = useState("Login");
   const onlineStatus = useOnlineStatus();
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <div className="flex justify-between">
@@ -44,6 +46,9 @@ const Header = () => {
               {" "}
               {login}
             </button>
+          </li>
+          <li className="px-4 font-bold">
+            <Link className="links">{loggedInUser}</Link>
           </li>
         </ul>
       </div>

@@ -8,6 +8,8 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
+import UserContext from "./utils/UserContext";
 
 /**
  *
@@ -24,11 +26,24 @@ import { lazy, Suspense } from "react";
  */
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  // Authentication
+  useEffect(() => {
+    // Make an API call and send username and password
+    const data = {
+      name: "Abhishek Chauhan",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="application">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div className="application">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 

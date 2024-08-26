@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import restaurantListData from "../common/mockData";
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 /**
  * 2 types of the rendering.
@@ -36,6 +37,7 @@ const Body = () => {
   const [searchInput, setSearchInput] = useState("");
 
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   const getDataFromAPI = async () => {
     const response = await fetch(
@@ -102,6 +104,15 @@ const Body = () => {
             {" "}
             Above 4 ratings
           </button>
+        </div>
+        <div className="search m-4 p-4 flex items-center">
+          <label htmlFor="name">User Name: </label>
+          <input
+            id="name"
+            className="border border-black p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
       <div className="flex flex-wrap justify-between">
