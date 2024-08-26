@@ -13,11 +13,11 @@ const useRestaurantMenu = (resId) => {
     const json = await response.json();
 
     setResInfo(json.data);
-    console.log("Abhishek is here");
-    console.log(json.data.cards[2].card.card.info);
-    console.log(
-      json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card
-    );
+    // console.log("Printing the menu here", json.data.cards[2].card.card.info);
+    // console.log(json.data.cards[2].card.card.info);
+    // console.log(
+    //   json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card
+    // );
   };
 
   return resInfo;

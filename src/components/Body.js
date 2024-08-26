@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import restaurantListData from "../common/mockData";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 
@@ -35,12 +35,17 @@ const Body = () => {
   const [filteredResList, setFilteredResList] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
   const getDataFromAPI = async () => {
     const response = await fetch(
-      "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.02760&lng=72.58710&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999"
     );
 
     const json = await response.json();
+
+    console.log("Setting the filteredResList", json);
+
     setResList(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -52,6 +57,8 @@ const Body = () => {
   useEffect(() => {
     getDataFromAPI();
   }, []);
+
+  console.log("Showing the filteredResList", filteredResList);
 
   if (filteredResList.length === 0) {
     return <Shimmer />;
@@ -100,10 +107,14 @@ const Body = () => {
       <div className="flex flex-wrap justify-between">
         {filteredResList.map((restaurant) => (
           <Link
-            to={"/restaurant/" + restaurant.info.id}
+            style={{
+              textDecoration: "none",
+              color: "#000",
+            }}
             key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+            <RestaurantCard resData={restaurant} />
           </Link>
         ))}
       </div>
