@@ -12,6 +12,7 @@ import { useState, useEffect } from "react";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
+import Cart from "./components/Cart.js";
 
 /**
  *
@@ -70,6 +71,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/restaurants/:resId",
